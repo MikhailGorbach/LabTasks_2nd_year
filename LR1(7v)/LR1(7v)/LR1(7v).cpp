@@ -224,7 +224,7 @@ int main()
 		}
 		cout << "2 - Print information" << endl;
 		cout << "3 - Search student after certain date" << endl;
-		cout << "4 - Delete last element" << endl;
+		cout << "4 - Delete first element" << endl;
 		cout << "5 - Constructor with parameters" << endl;
 		cout << "6 - Copy constructor" << endl;
 		cout << "7 - Exit" << endl;

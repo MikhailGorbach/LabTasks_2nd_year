@@ -132,11 +132,6 @@ void List::AddList()
 		cout << "Student full name: "; cin.get(); getline(cin, p.fullname);
 		cout << "Date of birth (use whitespace): "; cin >> p.day >> p.month >> p.year;
 		Profile* temp = right;
-		while (right->next)
-		{
-			temp = right;
-			right = right->next;
-		}
 		Profile* newE = new Profile;
 		newE->next = 0;
 		newE->prev = temp;
@@ -200,7 +195,7 @@ void List::Del()
 		if (check == '*') return;
 		left = left->next;
 		delete temp;
-		cout << "Last element was succesfully deleted." << endl;
+		cout << "First element was succesfully deleted." << endl;
 	}
 }
 struct Profile* List::getValue()

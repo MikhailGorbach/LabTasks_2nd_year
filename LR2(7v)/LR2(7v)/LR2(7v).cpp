@@ -1,53 +1,63 @@
 ﻿#include <iostream>
 #include <conio.h>
 using namespace std;
+
+//Абстракнтный класс
 class Equation abstract
 {
-public: virtual int FindYByX(int) = 0;
+public:
+	virtual int FindYByX() = 0;
 protected:
+	int x;
 	int y = 0;
 };
-class Linear : public Equation
+
+class Linear : public Equation //Наследник Линейное уравнение
 {
+
 public:
-	int FindYByX(int valueX) override
+	Linear(int& x)
 	{
-		int x;
-		cout << "Write x = ";
-		cin >> x;
+		this->x = x;
+	}
+	int FindYByX() override
+	{
 		return y = x * (rand() % 9 + 1) + rand() % 9 + 1;
 	}
 };
-class Quadratic : public Equation
+
+class Quadratic : public Equation //Наследник Квадратное уравнение
 {
 public:
-	int FindYByX(int valueX) override
+	Quadratic(int& x)
 	{
-		int x;
-		cout << "Write x = ";
-		cin >> x;
+		this->x = x;
+	}
+	int FindYByX() override
+	{
 		return y = pow(x, 2) * (rand() % 9 + 1) + (rand() % 9 + 1) * x + rand() % 9 + 1;
 	}
 };
-class Cubic : public Equation
+
+class Cubic : public Equation //Наследник Кубическое уравнение
 {
 public:
-	int FindYByX(int valueX) override
+	Cubic(int& x)
 	{
-		int x;
-		cout << "Write x = ";
-		cin >> x;
+		this->x = x;
+	}
+	int FindYByX() override
+	{
 		return y = pow(x, 3) * (rand() % 9 + 1) + pow(x, 2) * (rand() % 9 + 1) + (rand() % 9 + 1) * x + rand() % 9 + 1;
 	}
 };
+//Класс для решения
 class Solver
 {
-private:
-	int valX;
 public:
 	int FindYByX(Equation* eq)
 	{
-		return eq->FindYByX(valX);
+		return eq->FindYByX();
 	}
 };
 int main()
@@ -69,21 +79,30 @@ int main()
 		{
 		case 1:
 		{
-			Linear L;
+			cout << "Write x = ";
+			int x;
+			cin >> x;
+			Linear L(x);
 			cout << "Result: " << S.FindYByX(&L) << endl;
 			_getch();
 			break;
 		}
 		case 2:
 		{
-			Quadratic Q;
+			cout << "Write x = ";
+			int x;
+			cin >> x;
+			Quadratic Q(x);
 			cout << "Result: " << S.FindYByX(&Q) << endl;
 			_getch();
 			break;
 		}
 		case 3:
 		{
-			Cubic C;
+			cout << "Write x = ";
+			int x;
+			cin >> x;
+			Cubic C(x);
 			cout << "Result: " << S.FindYByX(&C) << endl;
 			_getch();
 			break;

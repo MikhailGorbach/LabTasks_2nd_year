@@ -67,8 +67,15 @@ int main()
 		case 6:
 		{
 			cout << "Copy list" << endl;
-			List l3(l);
-			l3.Print();
+			List l2(l);
+			l2.Print();
+			cout << "Now delete first element." << endl;
+			l2.Del();
+			system("pause");
+			cout << "New list" << endl;
+			l2.Print();
+			cout << "Original list" << endl;
+			l.Print();
 			system("pause");
 			break;
 		}

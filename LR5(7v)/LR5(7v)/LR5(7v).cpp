@@ -17,6 +17,8 @@ public:
 	void setB(int b);
 	void setC(int c);
 	int operator +();
+	friend bool operator !(Triangle& other);
+	void operator <<(Triangle& other);
 };
 
 int main()
@@ -24,11 +26,17 @@ int main()
 	cout << "Write sides of triangle" << endl;
 	int a = 0, b = 0, c = 0;
 	cin >> a >> b >> c;
-
-	Triangle tr(a,b,c);
-
-	cout << "Perimeter: " << tr.operator+() << endl;
 	
+	Triangle tr(a,b,c);
+	if (operator!(tr))
+	{
+		tr.operator<<(tr);
+	}
+	else
+	{
+		cout << "This triangle cannot exist!" << endl;
+		system("pause");
+	}
 	system("pause");
 	return 0;
 }
@@ -73,4 +81,16 @@ int Triangle::operator +()
 {
 	int p = getA() + getB() + getC();
 	return p;
+}
+bool operator !(Triangle& other)
+{
+	if ((other.a >= (other.b + other.c))
+		|| (other.b >= (other.a + other.c))
+			|| (other.c >= (other.b + other.a)))
+			return false;
+	return true;
+}
+void Triangle::operator <<(Triangle& other)
+{
+	cout << "Perimeter: " << other.operator+() << endl;
 }

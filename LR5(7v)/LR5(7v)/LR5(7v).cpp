@@ -19,25 +19,60 @@ public:
 	int operator +();
 	friend bool operator !(Triangle& other);
 	void operator <<(Triangle& other);
+	bool operator <=(Triangle& other);
+	friend bool operator ==(Triangle& other1, Triangle& other2);
 };
 
 int main()
 {
-	cout << "Write sides of triangle" << endl;
-	int a = 0, b = 0, c = 0;
-	cin >> a >> b >> c;
+	cout << "Write sides of first triangle" << endl;
+	int a = 0, b = 0, c = 0; cin >> a >> b >> c;
 	
-	Triangle tr(a,b,c);
-	if (operator!(tr))
+	Triangle tr1(a,b,c);
+	if (operator!(tr1))
 	{
-		tr.operator<<(tr);
+		tr1.operator<<(tr1);
+		system("pause");
 	}
 	else
 	{
 		cout << "This triangle cannot exist!" << endl;
 		system("pause");
 	}
-	system("pause");
+
+	cout << "Write sides of second triangle" << endl;
+	a = 0, b = 0, c = 0; cin >> a >> b >> c;
+	
+	Triangle tr2(a, b, c);
+	if (operator!(tr2))
+	{
+		tr2.operator<<(tr2);
+		system("pause");
+	}
+	else
+	{
+		cout << "This triangle cannot exist!" << endl;
+		system("pause");
+	}
+	
+	cout << "Now compare two perimeters..." << endl;
+	
+	if (tr1 == tr2)
+	{
+		cout << "All sides of these triangles are equal!" << endl;
+		system("pause");
+	}
+	else if (tr1.operator<=(tr2))
+	{
+		cout << "Second is larger or equal to." << endl;
+		system("pause");
+	}
+	else
+	{
+		cout << "First is larger." << endl;
+		system("pause");
+	}
+
 	return 0;
 }
 
@@ -93,4 +128,17 @@ bool operator !(Triangle& other)
 void Triangle::operator <<(Triangle& other)
 {
 	cout << "Perimeter: " << other.operator+() << endl;
+}
+bool Triangle::operator <=(Triangle& other)
+{
+	if (this->operator+() <= other.operator+())
+		return true;
+	return false;
+}
+bool operator ==(Triangle& other1, Triangle& other2)
+{
+	if ((other1.a == other2.a) &&
+		(other1.b == other2.b) &&
+		(other1.c == other2.c)) return true;
+	return false;
 }

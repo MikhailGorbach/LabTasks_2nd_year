@@ -65,7 +65,7 @@ public:
 				if (a[i][j] < min) min = a[i][j];
 			}
 		}
-		cout << min << endl;
+		cout << "Minimul element: " << min << endl;
 	}
 	//Вывод матрицы в консоль
 	void Print()

@@ -1,9 +1,9 @@
 ﻿#include <iostream>
 using namespace std;
 
-template <class T> void FillArray(T* t, int number);
-template <class T> void PrintArray(T* t, int number);
-template <class T> T LargestValue(T* t, int number);
+template <typename T> void FillArray(T* t, int number);
+template <typename T> void PrintArray(T* t, int number);
+template <typename T> T LargestValue(T* t, int number);
 
 int main()
 {
@@ -40,21 +40,21 @@ int main()
 	system("pause");
 	return 0;
 }
-template <class T> void FillArray(T* t, int number)
+template <typename T> void FillArray(T* t, int number)
 {
 	for (int i = 0; i < number; i++)
 	{
 		cin >> t[i];
 	}
 }
-template <class T> void PrintArray(T* t, int number)
+template <typename T> void PrintArray(T* t, int number)
 {
 	for (int i = 0; i < number; i++)
 	{
 		cout << t[i] + " ";
 	}
 }
-template <class T> T LargestValue(T* t, int number)
+template <typename T> T LargestValue(T* t, int number)
 {
 	T max = 0;
 	for (int i = 0; i < number; i++)

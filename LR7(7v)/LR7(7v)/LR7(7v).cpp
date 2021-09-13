@@ -1,5 +1,7 @@
 ﻿#include <iostream>
+#include <iomanip>
 #include <fstream>
+#include <math.h>
 using namespace std;
 
 
@@ -13,9 +15,50 @@ int main()
 	int b = 0;
 	cin >> b;
 
-	cout << a / b << endl;
-	cout << a % b << endl;
+	int result1, result2;
+	try
+	{
+		result1 = a / b;
+		result2 = a % b;
+		cout << setw(11) << setfill('$') << result1 << setfill('$') << endl;
+		cout << setw(11) << setfill('$') << result2 << setfill('$') << endl;
+	}
+	catch (exception e)
+	{
+		e.what();
+		system("pause");
+	}
 
+	try
+	{
+		ofstream fout;
+		fout.open("file.txt");
+		fout << result1 << endl;
+		fout << result2 << endl;
+		fout.close();
+	}
+	catch (exception e)
+	{
+		e.what();
+		cout << "Troubles with file." << endl;
+		system("pause");
+	}
+
+	cout << "Write x: ";
+	int x = 0;
+	cin >> x;
+	
+	float y = 0;
+	try
+	{
+		y = (cos(x) / sin(x)) * pow(x, 2);
+		cout << "Result: " << y << endl;
+	}
+	catch (exception e)
+	{
+		e.what();
+	}
+	
 	system("pause");
 	return 0;
 }

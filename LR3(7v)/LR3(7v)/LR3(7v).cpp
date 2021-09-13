@@ -1,13 +1,21 @@
-ï»¿#include <iostream>
+#include <iostream>
 #include <conio.h>
 using namespace std;
 
-class Tool // ÐšÐ»Ð°ÑÑ ÐŸÑ€Ð¸Ð±Ð¾Ñ€ Ñ Ð´Ð²ÑƒÐ¼Ñ Ð¿Ð¾Ð»ÑÐ¼Ð¸
+class Tool // Êëàññ Ïðèáîð ñ äâóìÿ ïîëÿìè
 {
 protected:
-	int delim; //Ð¦ÐµÐ½Ð° Ð´ÐµÐ»ÐµÐ½Ð¸Ñ
-	int inaccuracy; //ÐŸÐ¾Ð³Ñ€ÐµÑˆÐ½Ð¾ÑÑ‚ÑŒ
+	int delim; //Öåíà äåëåíèÿ
+	int inaccuracy; //Ïîãðåøíîñòü
 public:
+	int getDelim()
+	{
+		return delim;
+	}
+	int getInaccuracy()
+	{
+		return inaccuracy;
+	}
 	Tool(int delim, int inaccuracy)
 	{
 		this->delim = delim;
@@ -21,11 +29,15 @@ public:
 		cout << this->inaccuracy << endl;
 	}
 };
-class Spectrum // ÐšÐ»Ð°ÑÑ Ð¡Ð¿ÐµÐºÑ‚Ñ€ Ñ Ð¾Ð´Ð½Ð¸Ð¼ Ð¿Ð¾Ð»ÐµÐ¼
+class Spectrum // Êëàññ Ñïåêòð ñ îäíèì ïîëåì
 {
 protected:
-	int counter; //ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾ÑÑ‚Ð°Ð²Ð»ÑÑŽÑ‰Ð¸Ñ…
+	int counter; //Êîëè÷åñòâî ñîñòàâëÿþùèõ
 public:
+	int getCounter()
+	{
+		return counter;
+	}
 	Spectrum(int counter)
 	{
 		this->counter = counter;
@@ -36,16 +48,14 @@ public:
 		cout << this->counter << endl;
 	}
 };
-//ÐšÐ»Ð°ÑÑ Ð½Ð°ÑÐ»ÐµÐ´Ð½Ð¸Ðº Ð¾Ñ‚ Ð´Ð²ÑƒÑ… ÐºÐ»Ð°ÑÑÐ¾Ð²
+//Êëàññ íàñëåäíèê îò äâóõ êëàññîâ
 class Spectrometer : public Tool, public Spectrum
 {
 public:
-	/*Spectrometer()
+	Spectrometer(Tool& tool, Spectrum& spectrum) : Tool(tool.getDelim(), tool.getInaccuracy()), Spectrum(spectrum.getCounter())
 	{
-		this->counter = spectrum.counter;
-		this->inaccuracy = Tool::inaccuracy;
-		this->delim = Tool::delim;
-	}*/
+		cout << "Derived object." << endl;
+	}
 	void PrintInfSpmtmr()
 	{
 		cout << "Information about your spectrometer:" << endl;
@@ -60,48 +70,26 @@ public:
 
 int main()
 {
-	while (1)
-	{
-		system("cls");
-		cout << "1 - Create objects of base classes" << endl;
-		cout << "2 - Create object of derived class" << endl;
-		cout << "3 - Call derived method" << endl;
-		cout << "4 - Call basic methods by derived object" << endl;
-		cout << "5 - Exit" << endl;
-		cout << "Choose item -> ";
-		int key;
-		cin >> key;
-		switch (key)
-		{
-		case 1:
-		{
-			cout << "Write the number of components of the spectrum" << endl;
-			int k;
-			cin >> k;
-			Spectrum spectrum(k);
-			cout << "Write delimeters and inaccuracy of your tool" << endl;
-			int del, inacc;
-			cin >> del >> inacc;
-			Tool tool(del, inacc);
-			break;
-		}
-		case 2:
-			/*Spectrometer spectrometer();
-			break;*/
-		case 3:
-			/*spectrometer().PrintInfSpmtmr();*/
-			system("pause");
-			break;
-		case 4:
-			/*spectrometer().PrintInfTool();
-			spectrometer().PrintInfSpectrum();*/
-			system("pause");
-			break;
-		case 5:
-			return 0;
-		default:
-			cout << "Choose correct number." << endl;
-			_getch();
-		}
-	}
+	cout << "Write the number of components of the spectrum" << endl;
+	int k = 0;
+	cin >> k;
+	Spectrum spectrum(k);
+	system("pause");
+
+	cout << "Write delimeters and inaccuracy of your tool" << endl;
+	int del, inacc;
+	cin >> del >> inacc;
+	Tool tool(del, inacc);
+	system("pause");
+
+	Spectrometer spectrometer(tool, spectrum);
+	spectrometer.PrintInfSpmtmr();
+	system("pause");
+
+	cout << "Tool method." << endl;
+	spectrometer.PrintInfTool();
+	cout << "Spectrum method." << endl;
+	spectrometer.PrintInfSpectrum();
+	system("pause");
+	return 0;
 }

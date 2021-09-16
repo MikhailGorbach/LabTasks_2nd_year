@@ -12,8 +12,11 @@ private:
 	string end;
 	int hours;
 	int min;
-	int sec;
 public:
 	Train();
 	Train(int id, string end, int hours, int min);
+	int getId();
+	string getEnd();
+	int getHours();
+	int getMin();
 };

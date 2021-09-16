@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="LR8(7v).cpp" />
+    <ClCompile Include="Train.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="List.h" />
+    <ClInclude Include="Train.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

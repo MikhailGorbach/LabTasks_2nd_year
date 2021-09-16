@@ -13,3 +13,19 @@ Train::Train()
 	this->hours = 0;
 	this->min = 0;
 }
+int Train::getId()
+{
+	return this->id;
+}
+string Train::getEnd()
+{
+	return this->end;
+}
+int Train::getHours()
+{
+	return this->hours;
+}
+int Train::getMin()
+{
+	return this->min;
+}

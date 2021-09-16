@@ -15,21 +15,17 @@ int main()
 	int b = 0;
 	cin >> b;
 
-	int result1, result2;
+	int result1 = 0, result2 = 0;
 	try
 	{
-		if (b == 0)
-		{
-			throw exception("Value b = 0");
-		}
 		result1 = a / b;
 		result2 = a % b;
-		cout << setw(11) << setfill('$') << result1 << setfill('$') << endl;
-		cout << setw(11) << setfill('$') << result2 << setfill('$') << endl;
+		cout << setfill('$') << setw(11) << result1 << endl;
+		cout << setfill('$') << setw(11) << result2 << endl;
 	}
-	catch (const exception& e)
+	catch (...)
 	{
-		cout << "Value b = 0" << endl;
+		cout << "Troubles with number." << endl;
 		system("pause");
 	}
 
@@ -44,13 +40,13 @@ int main()
 		}
 		fout.close();
 	}
-	catch (const exception& e)
+	catch (...)
 	{
-		e.what();
 		cout << "Troubles with file." << endl;
 		system("pause");
 	}
 
+	// 2-ой пункт задания
 	cout << "Write x: ";
 	int x = 0;
 	cin >> x;
@@ -58,14 +54,13 @@ int main()
 	float y = 0;
 	try
 	{
-		if (sin(x) == 0) throw exception("sin(x) = 0");
 		y = (cos(x) / sin(x)) * pow(x, 2);
-		cout << "Result: " << y << endl;
+		cout << "Result: " << scientific << y << endl;
 	}
-	catch (exception e)
+	catch (...)
 	{
+		cout << "Troubles with sinus." << endl;
 		system("pause");
-		e.what();
 	}
 	
 	system("pause");

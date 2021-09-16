@@ -135,7 +135,7 @@ bool operator !(Triangle& other)
 }
 void Triangle::operator <<(Triangle& other)
 {
-	//cout << "Perimeter: " << other.operator+().getA() << endl;b
+	//cout << "Perimeter: " << other.operator+().getA() << endl;
 	cout << "Perimeter: " << other.operator+() << endl;
 }
 bool Triangle::operator <=(Triangle& other)

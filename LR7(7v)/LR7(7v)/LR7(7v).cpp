@@ -18,11 +18,16 @@ int main()
 	int result1 = 0, result2 = 0;
 	try
 	{
+		if (b==0) throw '0';
+		if (b<0) throw 0;
+		if (!cin) throw 0.1;
 		result1 = a / b;
 		result2 = a % b;
 		cout << setfill('$') << setw(11) << result1 << endl;
 		cout << setfill('$') << setw(11) << result2 << endl;
 	}
+	catch (char c) { cout << "Error: " << c << endl; }
+	catch (int) {}
 	catch (...)
 	{
 		cout << "Troubles with number." << endl;

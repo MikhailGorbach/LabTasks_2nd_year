@@ -4,7 +4,7 @@
 class List
 {
 private:
-	list<Train> list;
+	list<Train> _list;
 public:
 	List();
 	void NewList();

@@ -13,12 +13,12 @@ void List::NewList()
 	cout << "Введите время отправления (часы, минуты): "; cin >> hours >> min;
 
 	Train t(id, end, hours, min);
-	list.push_front(t);
+	_list.push_front(t);
 }
 void List::Print()
 {
 	cout << "Номер поезда " << "Станция назначения " << "Время отправления (часы, минуты) " << endl;
-	for (Train train : list)
+	for (Train train : _list)
 	{
 		cout
 			<< train.getId() << "\t"
@@ -31,7 +31,7 @@ void List::Print()
 void List::PrintById(int id)
 {
 	cout << "Номер поезда " << "Станция назначения " << "Время отправления (часы, минуты) " << endl;
-	for (Train train : list)
+	for (Train train : _list)
 	{
 		if (train.getId() == id)
 		{
@@ -47,7 +47,7 @@ void List::PrintById(int id)
 void List::PrintByStation(string station)
 {
 	cout << "Номер поезда " << "Станция назначения " << "Время отправления (часы, минуты) " << endl;
-	for (Train train : list)
+	for (Train train : _list)
 	{
 		if (train.getEnd() == station)
 		{
@@ -65,7 +65,7 @@ void List::Save()
 	ofstream fout;
 	fout.open("file.txt", ios::out);
 
-	for (Train train : list)
+	for (Train train : _list)
 	{
 		fout << train.getId() << endl;
 		fout << train.getEnd() << endl;
@@ -91,6 +91,6 @@ void List::Upload()
 		fin >> min1;
 
 		Train newtrain(id1, end1, hours1, min1);
-		list.push_front(newtrain);
+		_list.push_front(newtrain);
 	}
 }
